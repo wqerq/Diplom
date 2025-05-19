@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Diplom.Views.SeverityPicker"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:Diplom.ViewModels"
+    xmlns:local="clr-namespace:Diplom"
+    Title="Новая тренировка"
+    Shell.NavBarIsVisible="False">
+
+    <ContentPage.BindingContext>
+        <vm:SeverityPickerViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid Padding="24" RowSpacing="24">
+        <StackLayout x:Name="Step1"
+                     IsVisible="{Binding IsStep1}">
+            <Label Text="Выберите тип афазии"
+                   Style="{StaticResource TitleFont}" />
+
+            <CollectionView ItemsSource="{Binding AphasiaTypes}"
+                            SelectionMode="Single"
+                            SelectedItem="{Binding SelectedType}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Span="2"
+                                     HorizontalItemSpacing="16"
+                                     VerticalItemSpacing="16" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Style="{StaticResource OptionCard}">
+                            <Label Text="{Binding}"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center" />
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Button Text="Далее"
+                    Margin="0,24,0,0"
+                    Command="{Binding NextCommand}" />
+        </StackLayout>
+
+        <StackLayout x:Name="Step2"
+                     IsVisible="{Binding IsStep2}">
+            <Label Text="Степень тяжести"
+                   Style="{StaticResource TitleFont}" />
+
+            <CollectionView ItemsSource="{Binding Severities}"
+                            SelectionMode="Single"
+                            SelectedItem="{Binding SelectedSeverity}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Span="3"
+                                     HorizontalItemSpacing="16"
+                                     VerticalItemSpacing="16" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Style="{StaticResource OptionChip}">
+                            <Label Text="{Binding}"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center" />
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Grid ColumnDefinitions="*,*"
+                  Margin="0,24,0,0">
+                <Button Text="Назад"
+                        Command="{Binding BackCommand}" />
+                <Button Grid.Column="1"
+                        Text="Начать"
+                        Command="{Binding FinishCommand}"
+                        IsEnabled="{Binding CanFinish}" />
+            </Grid>
+        </StackLayout>
+    </Grid>
+</ContentPage>

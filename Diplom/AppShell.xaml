@@ -1,0 +1,18 @@
+<Shell
+    x:Class="Diplom.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:Diplom.Views"
+    Shell.NavBarIsVisible="False">
+
+    <TabBar>
+        <ShellContent Title="Тренировка" Icon="ic_task.png"
+                      ContentTemplate="{DataTemplate views:StartPage}" />
+
+        <!--<ShellContent Title="Видео" Icon="ic_video.png"
+                      ContentTemplate="{DataTemplate views:DailyVideoPage}" />
+
+        <ShellContent Title="Статистика" Icon="ic_stats.png"
+                      ContentTemplate="{DataTemplate views:StatsPage}" />-->
+    </TabBar>
+</Shell>

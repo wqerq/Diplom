@@ -1,0 +1,33 @@
+<ContentPage
+    x:Class="Diplom.Views.StartPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Главная">
+
+    <Grid Padding="24" RowSpacing="24"
+          VerticalOptions="Center"
+          RowDefinitions="Auto,Auto">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Button Style="{StaticResource CardButton}"
+                Grid.ColumnSpan="2"
+                Text="Новая-тренировка"
+                ImageSource="ic_training_big.png"
+                Command="{Binding StartTrainingCommand}" />
+
+        <Button Style="{StaticResource CardButton}"
+                Grid.Row="1"
+                Text="Видео-гимнастика"
+                ImageSource="ic_video_big.png"
+                Command="{Binding OpenVideoCommand}" />
+
+        <Button Style="{StaticResource CardButton}"
+                Grid.Row="1" Grid.Column="1"
+                Text="Моя-статистика"
+                ImageSource="ic_stats_big.png"
+                Command="{Binding OpenStatsCommand}" />
+    </Grid>
+</ContentPage>
