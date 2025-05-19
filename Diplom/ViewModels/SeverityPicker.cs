@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Diplom.Models.Enums;
+using System.Diagnostics;
 
 namespace Diplom.ViewModels;
 
@@ -17,10 +18,11 @@ public partial class SeverityPickerViewModel : ObservableObject
     [ObservableProperty] private bool isStep1 = true;
     [ObservableProperty] private bool isStep2;
 
+
     partial void OnIsStep1Changed(bool value) => IsStep2 = !value;
 
     public bool CanFinish =>
-        SelectedType is not null && SelectedSeverity is not null;
+        true;
 
     [RelayCommand]
     private void Next()

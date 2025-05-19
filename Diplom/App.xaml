@@ -1,14 +1,33 @@
-﻿<?xml version = "1.0" encoding = "UTF-8" ?>
-<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:Diplom"
-             x:Class="Diplom.App">
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application
+    x:Class="Diplom.App"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Diplom"
+    xmlns:views="clr-namespace:Diplom.Views.TaskViews"
+    xmlns:models="clr-namespace:Diplom.Models">
+
     <Application.Resources>
+
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate x:Key="FindOddTpl" x:DataType="models:FindOddTask">
+                <views:FindOddView />
+            </DataTemplate>
+
+            <DataTemplate x:Key="CompleteRowTpl" x:DataType="models:CompleteRowTask">
+                <views:CompleteRowView />
+            </DataTemplate>
+
+            <local:TaskTemplateSelector x:Key="TaskSelector"
+                FindOddTemplate="{StaticResource FindOddTpl}"
+                CompleteRowTemplate="{StaticResource CompleteRowTpl}" />
+
+            <local:NotNullConverter x:Key="NotNull" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

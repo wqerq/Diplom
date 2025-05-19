@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using Diplom.Views;
+using System.Windows.Input;
 
 namespace Diplom
 {
@@ -8,6 +9,7 @@ namespace Diplom
         {
             InitializeComponent();
             BindingContext = this;
+            Routing.RegisterRoute("select", typeof(SeverityPicker));
         }
 
         public ICommand OpenSettingsCommand =>

@@ -15,4 +15,5 @@
         <ShellContent Title="Статистика" Icon="ic_stats.png"
                       ContentTemplate="{DataTemplate views:StatsPage}" />-->
     </TabBar>
+   
 </Shell>

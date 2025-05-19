@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="Diplom.Views.SessionPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Diplom.ViewModels"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.BindingContext>
+        <vm:SessionViewModel/>
+    </ContentPage.BindingContext>
+
+    <Grid RowDefinitions="Auto,*" Padding="24" RowSpacing="20">
+        <Grid ColumnDefinitions="*,Auto">
+            <Label Text="{Binding Current.Description}" FontSize="20"/>
+            <Label Text="{Binding ProgressText}" FontSize="16" TextColor="Gray"
+                   Grid.Column="1"/>
+        </Grid>
+        <ContentPresenter Grid.Row="1"
+                          x:Name="Presenter"
+                          Content="{Binding Current}"
+                          ContentTemplateSelector="{StaticResource TaskSelector}"/>
+    </Grid>
+
+    <ToolbarItem Text="Назад" Command="{Binding CancelCommand}"/>
+</ContentPage>

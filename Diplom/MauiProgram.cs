@@ -1,4 +1,5 @@
 ﻿using Diplom.ViewModels;
+using Diplom.Views;
 using Microsoft.Extensions.Logging;
 
 namespace Diplom
@@ -17,6 +18,8 @@ namespace Diplom
                 });
 
             builder.Services.AddTransient<StartViewModel>();
+            builder.Services.AddTransient<StartPage>();
+
 
 #if DEBUG
             builder.Logging.AddDebug();

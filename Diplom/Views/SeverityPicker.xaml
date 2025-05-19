@@ -19,23 +19,17 @@
                    Style="{StaticResource TitleFont}" />
 
             <CollectionView ItemsSource="{Binding AphasiaTypes}"
-                            SelectionMode="Single"
-                            SelectedItem="{Binding SelectedType}">
-                <CollectionView.ItemsLayout>
-                    <GridItemsLayout Span="2"
-                                     HorizontalItemSpacing="16"
-                                     VerticalItemSpacing="16" />
-                </CollectionView.ItemsLayout>
+                SelectionMode="Single"
+                SelectedItem="{Binding SelectedType}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame Style="{StaticResource OptionCard}">
-                            <Label Text="{Binding}"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Center" />
-                        </Frame>
+                        <Label Text="{Binding}"
+                            Padding="20"
+                   BackgroundColor="#DDDDDD" />
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+
 
             <Button Text="Далее"
                     Margin="0,24,0,0"
@@ -48,20 +42,13 @@
                    Style="{StaticResource TitleFont}" />
 
             <CollectionView ItemsSource="{Binding Severities}"
-                            SelectionMode="Single"
-                            SelectedItem="{Binding SelectedSeverity}">
-                <CollectionView.ItemsLayout>
-                    <GridItemsLayout Span="3"
-                                     HorizontalItemSpacing="16"
-                                     VerticalItemSpacing="16" />
-                </CollectionView.ItemsLayout>
+                    SelectionMode="Single"
+                    SelectedItem="{Binding SelectedSeverity}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame Style="{StaticResource OptionChip}">
-                            <Label Text="{Binding}"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Center" />
-                        </Frame>
+                        <Label Text="{Binding}"
+                            Padding="20"
+                            BackgroundColor="#DDDDDD" />
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

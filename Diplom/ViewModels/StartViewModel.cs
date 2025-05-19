@@ -28,6 +28,12 @@ namespace Diplom.ViewModels
             };
             await Shell.Current.GoToAsync("task", parms);
         }
+
+        [RelayCommand]
+        private async Task StartTraining()
+        {
+            await Shell.Current.GoToAsync("select");
+        }
     }
 
 }

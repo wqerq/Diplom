@@ -445,4 +445,31 @@
         </Setter>
     </Style>
 
+    <Style x:Key="OptionCard" TargetType="Frame">
+        <Setter Property="CornerRadius"     Value="20" />
+        <Setter Property="HeightRequest"    Value="120" />
+        <Setter Property="BackgroundColor"  Value="{DynamicResource PrimaryLight}" />
+
+        <Setter Property="Shadow">
+            <Setter.Value>
+                <Shadow Brush="#55000000"
+                    Radius="8"
+                    Offset="0,4"
+                    Opacity="0.3" />
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="InputTransparent" Value="False" />
+        <Setter Property="IsEnabled"        Value="True"  />
+    </Style>
+
+    <Style x:Key="OptionChip"
+       TargetType="Frame"
+       BasedOn="{StaticResource OptionCard}">
+        <Setter Property="HeightRequest" Value="80" />
+        <Setter Property="CornerRadius"  Value="40" />
+    </Style>
+
+
+
 </ResourceDictionary>
