@@ -2,24 +2,20 @@
 <ContentPage x:Class="Diplom.Views.SessionPage"
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:vm="clr-namespace:Diplom.ViewModels"
              Shell.NavBarIsVisible="False">
 
-    <ContentPage.BindingContext>
-        <vm:SessionViewModel/>
-    </ContentPage.BindingContext>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Назад" Command="{Binding CancelCommand}" />
+    </ContentPage.ToolbarItems>
 
-    <Grid RowDefinitions="Auto,*" Padding="24" RowSpacing="20">
+    <Grid Padding="24" RowSpacing="20"
+          RowDefinitions="Auto,*">
         <Grid ColumnDefinitions="*,Auto">
-            <Label Text="{Binding Current.Description}" FontSize="20"/>
-            <Label Text="{Binding ProgressText}" FontSize="16" TextColor="Gray"
+            <Label Text="{Binding CurrentTask.Description}" FontSize="20"/>
+            <Label Text="{Binding Progress}" FontSize="16" TextColor="Gray"
                    Grid.Column="1"/>
         </Grid>
-        <ContentPresenter Grid.Row="1"
-                          x:Name="Presenter"
-                          Content="{Binding Current}"
-                          ContentTemplateSelector="{StaticResource TaskSelector}"/>
-    </Grid>
 
-    <ToolbarItem Text="Назад" Command="{Binding CancelCommand}"/>
+        <ContentView x:Name="TaskHost" Grid.Row="1"/>
+    </Grid>
 </ContentPage>

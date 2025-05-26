@@ -10,12 +10,16 @@ namespace Diplom.Helpers
     public static class JsonEx
     {
         public static string Get(this JsonElement e, string prop) =>
-            e.GetProperty(prop).GetString() ?? "";
+        e.TryGetProperty(prop, out var p) ? p.GetString() ?? "" : "";
 
         public static string[] GetStringArray(this JsonElement e, string prop) =>
-            e.GetProperty(prop).EnumerateArray()
-                               .Select(x => x.GetString() ?? "")
-                               .ToArray();
+            e.TryGetProperty(prop, out var p) && p.ValueKind == JsonValueKind.Array
+                ? p.EnumerateArray().Select(x => x.GetString() ?? "").ToArray()
+                : Array.Empty<string>();
+        public static int[] GetIntArray(this JsonElement e, string prop) =>
+            e.TryGetProperty(prop, out var p) && p.ValueKind == JsonValueKind.Array
+                ? p.EnumerateArray().Select(x => x.GetInt32()).ToArray()
+                : Array.Empty<int>();
     }
 }
 

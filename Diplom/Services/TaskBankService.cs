@@ -19,31 +19,48 @@ namespace Diplom.Services
             using var s = FileSystem.OpenAppPackageFileAsync("Data/tasks.json").Result;
             var raw = JsonSerializer.Deserialize<JsonElement[]>(s)!;
 
-            _bank = raw.Select(Parse)
-                       .GroupBy(t => (t.Type, t.Level))
-                       .ToDictionary(g => g.Key, g => g.ToList());
+            _bank = raw
+                .Select(Parse)
+                .SelectMany(task =>
+                {
+                    var tArr = task.Types.Length == 0 ? Enum.GetValues<AphasiaType>() : task.Types;
+                    var lArr = task.Levels.Length == 0 ? Enum.GetValues<Severity>() : task.Levels;
+
+                    return from t in tArr
+                           from l in lArr
+                           select new { t, l, task };
+                })
+                .GroupBy(x => (x.t, x.l))
+                .ToDictionary(g => g.Key, g => g.Select(x => x.task).ToList());
+
         }
 
         public List<TaskBase> ListFor(AphasiaType t, Severity v) => _bank[(t, v)];
 
-        private static TaskBase Parse(JsonElement e) => e.Get("kind") switch
+        private static TaskBase Parse(JsonElement e)
         {
-            "CompleteRow" => new CompleteRowTask(
-                e.Get("id"), e.Get("description"),
-                e.GetStringArray("rowImages"),
-                e.Get("correctImage"),
-                e.GetStringArray("distractorImages"),
-                (AphasiaType)e.GetProperty("type").GetInt32(),
-                (Severity)e.GetProperty("level").GetInt32()),
+            var types = e.GetIntArray("types")
+                          .Select(i => (AphasiaType)i).ToArray();
+            var levels = e.GetIntArray("levels")
+                          .Select(i => (Severity)i).ToArray();
 
-            "FindOdd" => new FindOddTask(
-                e.Get("id"), e.Get("description"),
-                e.GetStringArray("images"),
-                e.GetProperty("oddIndex").GetInt32(),
-                (AphasiaType)e.GetProperty("type").GetInt32(),
-                (Severity)e.GetProperty("level").GetInt32()),
+            return e.Get("kind") switch
+            {
+                "CompleteRow" => new CompleteRowTask(
+                    e.Get("id"), e.Get("description"),
+                    e.GetStringArray("rowImages"),
+                    e.Get("correctImage"),
+                    e.GetStringArray("distractorImages"),
+                    types, levels),
 
-            _ => throw new NotSupportedException("unknown kind")
-        };
+                "FindOdd" => new FindOddTask(
+                    e.Get("id"), e.Get("description"),
+                    e.GetStringArray("images"),
+                    e.GetProperty("oddIndex").GetInt32(),
+                    types, levels),
+
+                _ => throw new NotSupportedException($"unknown kind {e.Get("kind")}")
+            };
+        }
     }
 }

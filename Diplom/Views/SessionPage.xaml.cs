@@ -1,21 +1,56 @@
+using Diplom.Helpers;
+using Diplom.Models;
 using Diplom.ViewModels;
+using Diplom.Views.TaskViews;
 
 namespace Diplom.Views;
 
 public partial class SessionPage : ContentPage
 {
+    private readonly TaskTemplateSelector _selector;
+
     public SessionPage(SessionViewModel vm)
     {
         InitializeComponent();
+
         BindingContext = vm;
 
-        Presenter.PropertyChanged += (_, e) =>
+        _selector = (TaskTemplateSelector)Application.Current.Resources["TaskSelector"];
+
+        vm.TaskPresented = () => TaskHost.Content as ITaskPresenter;
+
+        vm.PropertyChanged += (_, e) =>
         {
-            if (e.PropertyName == nameof(Presenter.Content) &&
-                Presenter.Content is ITaskPresenter p)
-                p.Reset();
+            if (e.PropertyName == nameof(vm.CurrentTask))
+                ShowTask(vm.CurrentTask);
         };
+
+        ShowTask(vm.CurrentTask);
     }
+
+    void ShowTask(TaskBase? task)
+    {
+        if (task is null) return;
+
+        var template = _selector.SelectTemplate(task, this);
+        var view = (View)template.CreateContent();
+
+        if (view is ITaskPresenter pres)
+        {
+            pres.Task = task;
+            view.BindingContext = view;
+
+            if (view is FindOddView fo)
+                fo.ContinueRequested += (_, __) =>
+                    (BindingContext as SessionViewModel)?.AnswerCommand.Execute(null);
+        }
+
+        TaskHost.Content = view;
+    }
+
     protected override bool OnBackButtonPressed()
-        => ((SessionViewModel)BindingContext).TryCancel();
+    {
+        (BindingContext as SessionViewModel)?.CancelCommand.Execute(null);
+        return true;
+    }
 }

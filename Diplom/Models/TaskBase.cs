@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 namespace Diplom.Models
 {
     public abstract record TaskBase(
-    string Id, string Description,
-    AphasiaType Type, Severity Level);
+        string Id,
+        string Description,
+        AphasiaType[] Types,
+        Severity[] Levels);
+
 }

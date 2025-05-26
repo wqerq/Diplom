@@ -15,21 +15,26 @@ namespace Diplom.Services
 
         public TaskGeneratorService(TaskBankService bank) => _bank = bank;
 
-        public TaskBase Next(AphasiaType t, Severity s)
+        public TaskBase Next(AphasiaType type, Severity level)
         {
-            var key = (t, s);
+            var list = _bank.ListFor(type, level);
 
+            if (list.Count == 0)
+                throw new InvalidOperationException(
+                    $"Для {type}/{level} нет ни одного упражнения (проверьте tasks.json)");
+
+            var key = (type, level);
             if (!_cache.TryGetValue(key, out var q) || q.Count == 0)
             {
-                var shuffled = _bank.ListFor(t, s)
-                                    .OrderBy(_ => Random.Shared.Next())
-                                    .ToList();
-                q = new Queue<TaskBase>(shuffled);
+                q = new Queue<TaskBase>(
+                        list.OrderBy(_ => Random.Shared.Next()));
                 _cache[key] = q;
             }
 
             return q.Dequeue();
         }
+
+
     }
 
 }

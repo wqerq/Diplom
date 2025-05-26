@@ -42,6 +42,6 @@ public partial class SeverityPickerViewModel : ObservableObject
             ["type"] = SelectedType,
             ["severity"] = SelectedSeverity
         };
-        await Shell.Current.GoToAsync("task", parms);
+        await Shell.Current.GoToAsync("session", parms);
     }
 }

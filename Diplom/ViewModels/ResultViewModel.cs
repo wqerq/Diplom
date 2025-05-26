@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace Diplom.ViewModels
 {
-    public partial class FinalResultViewModel : ObservableObject, IQueryAttributable
+    public partial class ResultViewModel : ObservableObject, IQueryAttributable
     {
         [ObservableProperty] private string result = "";
 
         public IRelayCommand RetryCommand { get; }
         public IRelayCommand HomeCommand { get; }
 
-        public FinalResultViewModel()
+        public ResultViewModel()
         {
             RetryCommand = new RelayCommand(async () => await Shell.Current.GoToAsync(".."));
             HomeCommand = new RelayCommand(async () => await Shell.Current.GoToAsync("//home"));

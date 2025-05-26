@@ -16,7 +16,6 @@ namespace Diplom.Helpers
             return item switch
             {
                 Models.FindOddTask => FindOddTemplate!,
-                Models.CompleteRowTask => CompleteRowTemplate!,
                 _ => throw new NotSupportedException($"No template for {item}")
             };
         }

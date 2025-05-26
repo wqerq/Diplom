@@ -1,4 +1,6 @@
-﻿using Diplom.ViewModels;
+﻿using Diplom.Helpers;
+using Diplom.Services;
+using Diplom.ViewModels;
 using Diplom.Views;
 using Microsoft.Extensions.Logging;
 
@@ -19,6 +21,11 @@ namespace Diplom
 
             builder.Services.AddTransient<StartViewModel>();
             builder.Services.AddTransient<StartPage>();
+            builder.Services.AddTransient<SessionViewModel>();
+            builder.Services.AddTransient<SessionPage>();
+            builder.Services.AddSingleton<TaskBankService>();
+            builder.Services.AddSingleton<TaskGeneratorService>();
+
 
 
 #if DEBUG

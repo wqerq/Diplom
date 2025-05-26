@@ -52,8 +52,14 @@
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
 
+		 <MauiAsset Include="Resources\Data\tasks.json" LogicalName="Data/tasks.json" />
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+	  <MauiAsset Include="Resources\Data\tasks.json" />
 	</ItemGroup>
 
 	<ItemGroup>

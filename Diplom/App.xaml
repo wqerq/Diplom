@@ -3,7 +3,7 @@
     x:Class="Diplom.App"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:Diplom"
+    xmlns:helper="clr-namespace:Diplom.Helpers"
     xmlns:views="clr-namespace:Diplom.Views.TaskViews"
     xmlns:models="clr-namespace:Diplom.Models">
 
@@ -19,15 +19,10 @@
                 <views:FindOddView />
             </DataTemplate>
 
-            <DataTemplate x:Key="CompleteRowTpl" x:DataType="models:CompleteRowTask">
-                <views:CompleteRowView />
-            </DataTemplate>
+            <helper:TaskTemplateSelector x:Key="TaskSelector"
+                FindOddTemplate="{StaticResource FindOddTpl}" />
 
-            <local:TaskTemplateSelector x:Key="TaskSelector"
-                FindOddTemplate="{StaticResource FindOddTpl}"
-                CompleteRowTemplate="{StaticResource CompleteRowTpl}" />
-
-            <local:NotNullConverter x:Key="NotNull" />
+            <helper:NotNullConverter x:Key="NotNull" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

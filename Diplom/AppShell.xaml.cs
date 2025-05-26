@@ -10,6 +10,8 @@ namespace Diplom
             InitializeComponent();
             BindingContext = this;
             Routing.RegisterRoute("select", typeof(SeverityPicker));
+            Routing.RegisterRoute("session", typeof(SessionPage));
+            Routing.RegisterRoute("result", typeof(ResultPage));
         }
 
         public ICommand OpenSettingsCommand =>

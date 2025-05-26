@@ -12,6 +12,6 @@ namespace Diplom.Models
     string[] RowImages,
     string CorrectImage,
     string[] DistractorImages,
-    AphasiaType Type, Severity Level)
-    : TaskBase(Id, Description, Type, Level);
+    AphasiaType[] Types, Severity[] Levels)
+    : TaskBase(Id, Description, Types, Levels);
 }

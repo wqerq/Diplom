@@ -3,19 +3,9 @@
     "kind": "FindOdd",
     "id": "sens_gross_odd_001",
     "description": "Найди лишнюю картинку",
-    "images": [ "apple.png", "pear.png", "banana.png", "boot.png" ],
+    "images": [ "cup.png", "spoon.png", "teapot.png", "chair.png" ],
     "oddIndex": 3,
-    "type": 1,
-    "level": 2
-  },
-  {
-    "kind": "CompleteRow",
-    "id": "sens_gross_row_002",
-    "description": "Дополните ряд",
-    "rowImages": [ "apple.png", "pear.png" ],
-    "correctImage": "banana.png",
-    "distractorImages": [ "cucumber.png", "boot.png" ],
-    "type": 1,
-    "level": 2
+    "type": [ 1, 2, 3, 4 ],
+    "level": [ 1, 2, 3 ]
   }
 ]
