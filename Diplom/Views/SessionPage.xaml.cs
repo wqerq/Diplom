@@ -2,6 +2,7 @@ using Diplom.Helpers;
 using Diplom.Models;
 using Diplom.ViewModels;
 using Diplom.Views.TaskViews;
+using System.ComponentModel;
 
 namespace Diplom.Views;
 
@@ -40,9 +41,14 @@ public partial class SessionPage : ContentPage
             pres.Task = task;
             view.BindingContext = view;
 
-            if (view is FindOddView fo)
-                fo.ContinueRequested += (_, __) =>
-                    (BindingContext as SessionViewModel)?.AnswerCommand.Execute(null);
+            if (view is INotifyPropertyChanged)
+                (view as ContentView).BindingContext = pres;
+
+            pres.ContinueRequested += (_, __) =>
+            {
+                if (BindingContext is SessionViewModel vm)
+                    vm.AnswerCommand.Execute(null);
+            };
         }
 
         TaskHost.Content = view;

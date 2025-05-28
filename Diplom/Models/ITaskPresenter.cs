@@ -12,6 +12,9 @@ namespace Diplom.Models
         bool IsCompleted { get; }
         bool IsCorrect { get; }
         void Reset();
+        void CheckAnswer();
+
+        event EventHandler ContinueRequested;
     }
 
 }

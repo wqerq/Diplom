@@ -15,6 +15,7 @@ namespace Diplom.ViewModels
         [ObservableProperty] private AphasiaType? selectedType;
         [ObservableProperty] private Severity? selectedSeverity;
 
+
         public bool CanStart =>
             SelectedType is not null && SelectedSeverity is not null;
 
@@ -34,6 +35,19 @@ namespace Diplom.ViewModels
         {
             await Shell.Current.GoToAsync("select");
         }
+
+        [RelayCommand]
+        private async Task OpenStats()
+        {
+            await Shell.Current.GoToAsync("stats");
+        }
+
+        [RelayCommand]
+        private async Task OpenVideo()
+        {
+            await Shell.Current.GoToAsync("video");
+        }
+
     }
 
 }

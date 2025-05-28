@@ -5,7 +5,29 @@
     "description": "Найди лишнюю картинку",
     "images": [ "cup.png", "spoon.png", "teapot.png", "chair.png" ],
     "oddIndex": 3,
-    "type": [ 1, 2, 3, 4 ],
-    "level": [ 1, 2, 3 ]
+    "types": [ 1, 2, 3, 4 ],
+    "levels": [ 1, 2, 3 ]
+  },
+
+  {
+    "id": "sens_gross_row_01",
+    "kind": "CompleteRow",
+    "description": "Дополни ряд",
+    "row": [ "chair.png", "closet.png", "sofa.png" ],
+    "variants": [ "armchair.png", "pad.png", "teapot.png" ],
+    "correct": "armchair.png",
+    "types": [ 1, 2, 3, 4 ],
+    "levels": [ 1, 2, 3 ]
+  },
+
+  {
+    "id": "sens_gross_cat_01",
+    "kind": "Category",
+    "description": "Отметь картинки, обозначающие мебель",
+    "category": "мебель",
+    "images": [ "chair.png", "teapot.png", "desk.png", "cup.png", "sofa.png" ],
+    "answers": [ "chair.png", "desk.png", "sofa.png" ],
+    "types": [ 1, 2, 3, 4 ],
+    "levels": [ 1, 2, 3 ]
   }
 ]

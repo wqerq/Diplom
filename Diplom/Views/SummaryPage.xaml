@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage
+    x:Class="Diplom.Views.SummaryPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Результат">
+
+    <VerticalStackLayout Padding="24" Spacing="24"
+                         HorizontalOptions="Center">
+        <Label x:Name="Score"
+               FontSize="32"
+               FontAttributes="Bold"/>
+        <Button Text="На главную" Clicked="OnHome"/>
+    </VerticalStackLayout>
+</ContentPage>

@@ -10,4 +10,5 @@ public partial class StartPage : ContentPage
 		InitializeComponent();
         BindingContext = vm;
     }
+
 }

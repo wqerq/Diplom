@@ -1,6 +1,7 @@
 ﻿using Diplom.Helpers;
 using Diplom.Models;
 using Diplom.Models.Enums;
+using Diplom.Models.TaskModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,11 +22,11 @@ namespace Diplom.Services
 
             _bank = raw
                 .Select(Parse)
+                .Where(task => task is not null)
                 .SelectMany(task =>
                 {
                     var tArr = task.Types.Length == 0 ? Enum.GetValues<AphasiaType>() : task.Types;
                     var lArr = task.Levels.Length == 0 ? Enum.GetValues<Severity>() : task.Levels;
-
                     return from t in tArr
                            from l in lArr
                            select new { t, l, task };
@@ -39,27 +40,35 @@ namespace Diplom.Services
 
         private static TaskBase Parse(JsonElement e)
         {
-            var types = e.GetIntArray("types")
-                          .Select(i => (AphasiaType)i).ToArray();
-            var levels = e.GetIntArray("levels")
-                          .Select(i => (Severity)i).ToArray();
+            var types = e.GetIntArray("types").Select(i => (AphasiaType)i).ToArray();
+            var levels = e.GetIntArray("levels").Select(i => (Severity)i).ToArray();
 
             return e.Get("kind") switch
             {
                 "CompleteRow" => new CompleteRowTask(
-                    e.Get("id"), e.Get("description"),
-                    e.GetStringArray("rowImages"),
-                    e.Get("correctImage"),
-                    e.GetStringArray("distractorImages"),
-                    types, levels),
+                    id: e.Get("id"),
+                    description: e.Get("description"),
+                    row: e.GetStringArray("row"),
+                    variants: e.GetStringArray("variants"),
+                    correct: e.Get("correct"),
+                    t: types, s: levels),
 
                 "FindOdd" => new FindOddTask(
-                    e.Get("id"), e.Get("description"),
-                    e.GetStringArray("images"),
-                    e.GetProperty("oddIndex").GetInt32(),
-                    types, levels),
+                    Id: e.Get("id"),
+                    Description: e.Get("description"),
+                    Images: e.GetStringArray("images"),
+                    OddIndex: e.GetProperty("oddIndex").GetInt32(),
+                    Types: types, Levels: levels),
 
-                _ => throw new NotSupportedException($"unknown kind {e.Get("kind")}")
+                "Category" => new CategoryTask(
+                    id: e.Get("id"),
+                    description: e.Get("description"),
+                    category: e.Get("category"),
+                    images: e.GetStringArray("images"),
+                    answers: e.GetStringArray("answers"),
+                    t: types, s: levels),
+
+                _ => throw new NotSupportedException()
             };
         }
     }

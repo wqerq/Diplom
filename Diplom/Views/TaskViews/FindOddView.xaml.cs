@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using Diplom.Models;
+using Diplom.Models.TaskModels;
 namespace Diplom.Views.TaskViews;
 
 public partial class FindOddView : ContentView, ITaskPresenter, INotifyPropertyChanged
@@ -15,6 +16,7 @@ public partial class FindOddView : ContentView, ITaskPresenter, INotifyPropertyC
         {
             _task = value;
             Pictures.ItemsSource = ((FindOddTask)_task).Images;
+            BindingContext = _task;
             Reset();
         }
     }
@@ -72,4 +74,6 @@ public partial class FindOddView : ContentView, ITaskPresenter, INotifyPropertyC
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(n));
 
     public bool IsCorrect => _isCorrect;
+
+    public void CheckAnswer() => OnAnswer(this, EventArgs.Empty);
 }

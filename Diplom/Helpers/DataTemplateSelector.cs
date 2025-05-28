@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Diplom.Models;
+using Diplom.Models.TaskModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,14 +12,15 @@ namespace Diplom.Helpers
     {
         public DataTemplate? FindOddTemplate { get; set; }
         public DataTemplate? CompleteRowTemplate { get; set; }
+        public DataTemplate? CategoryTemplate { get; set; }
 
         protected override DataTemplate OnSelectTemplate(object item, BindableObject _)
+        => item switch
         {
-            return item switch
-            {
-                Models.FindOddTask => FindOddTemplate!,
-                _ => throw new NotSupportedException($"No template for {item}")
-            };
-        }
+            FindOddTask => FindOddTemplate!,
+            CompleteRowTask => CompleteRowTemplate!,
+            CategoryTask => CategoryTemplate!,
+            _ => throw new NotSupportedException()
+        };
     }
 }

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentView x:Class="Diplom.Views.TaskViews.CategoryView"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Name="Root">
+
+    <Grid>
+        <VerticalStackLayout Spacing="16">
+
+            <Label Text="{Binding Description}"
+                   FontSize="18"
+                   FontAttributes="Bold"/>
+
+            <CollectionView x:Name="Gallery"
+                            SelectionMode="Multiple">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Span="3"
+                                     HorizontalItemSpacing="12"
+                                     VerticalItemSpacing="12" Orientation="Horizontal"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="4" CornerRadius="10">
+                            <Image Source="{Binding .}"
+                                   Aspect="AspectFill"
+                                   HeightRequest="90"/>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Button Text="Ответить"
+                    Clicked="OnAnswer"/>
+        </VerticalStackLayout>
+
+        <Grid x:Name="Overlay"
+              BackgroundColor="#80000000"
+              IsVisible="False">
+            <Frame Padding="24" CornerRadius="20"
+                   BackgroundColor="White"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center">
+                <VerticalStackLayout Spacing="16">
+                    <Label x:Name="OverlayText"
+                           FontAttributes="Bold"
+                           FontSize="20"
+                           HorizontalOptions="Center"/>
+                    <Button Text="Дальше"
+                            Clicked="OnContinue"/>
+                </VerticalStackLayout>
+            </Frame>
+        </Grid>
+    </Grid>
+</ContentView>

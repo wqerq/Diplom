@@ -7,7 +7,6 @@
 
     <Grid>
 
-        <!-- ===== ОСНОВНОЙ СЛОЙ ===== -->
         <VerticalStackLayout Spacing="16">
             <CollectionView x:Name="Pictures"
                             SelectionMode="Single"
@@ -36,7 +35,6 @@
         </VerticalStackLayout>
 
 
-        <!-- ===== ОВЕРЛЕЙ ===== -->
         <Grid x:Name="Overlay"
               BackgroundColor="#80000000"
               IsVisible="False">
