@@ -13,7 +13,7 @@
     "id": "sens_gross_row_01",
     "kind": "CompleteRow",
     "description": "Дополни ряд",
-    "row": [ "chair.png", "closet.png", "sofa.png" ],
+    "row": [ "chair.png", "closet.png", "sofa.png", "question.png" ],
     "variants": [ "armchair.png", "pad.png", "teapot.png" ],
     "correct": "armchair.png",
     "types": [ 1, 2, 3, 4 ],
@@ -27,7 +27,55 @@
     "category": "мебель",
     "images": [ "chair.png", "teapot.png", "desk.png", "cup.png", "sofa.png" ],
     "answers": [ "chair.png", "desk.png", "sofa.png" ],
+    "types": [ 4 ],
+    "levels": [ 3 ]
+  },
+
+  {
+    "kind": "FindOdd",
+    "id": "sens_gross_odd_002",
+    "description": "Найди лишнюю картинку",
+    "images": [ "chair.png", "spoon.png", "armchair.png", "closet.png" ],
+    "oddIndex": 1,
     "types": [ 1, 2, 3, 4 ],
     "levels": [ 1, 2, 3 ]
+  },
+
+  {
+    "kind": "FindOdd",
+    "id": "sens_gross_odd_003",
+    "description": "Найди лишнюю картинку",
+    "images": [ "sofa.png", "spoon.png", "teapot.png", "pad.png" ],
+    "oddIndex": 0,
+    "types": [ 1, 2, 3, 4 ],
+    "levels": [ 1, 2, 3 ]
+  },
+
+  {
+    "id": "sens_gross_row_01",
+    "kind": "CompleteRow",
+    "description": "Дополни ряд",
+    "row": [ "teapot.png", "knife.png", "pad.png", "question.png" ],
+    "variants": [ "armchair.png", "chair.png", "spoon.png" ],
+    "correct": "spoon.png",
+    "types": [ 1, 2, 3, 4 ],
+    "levels": [ 1, 2, 3 ]
+  },
+
+  {
+    "kind": "YesNo",
+    "id": "yn_001",
+    "description": "Это молоток?",
+    "image": "spoon.png",
+    "answer": false
+  },
+  {
+    "kind": "SentenceComplete",
+    "id": "sc_001",
+    "description": "Куй железо, пока …",
+    "opt1": "поздно",
+    "opt2": "горячо",
+    "opt3": "холодно",
+    "answer": "горячо"
   }
 ]

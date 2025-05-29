@@ -15,7 +15,6 @@ public partial class CategoryView : ContentView, ITaskPresenter, INotifyProperty
         set
         {
             _task = value;
-            Gallery.ItemsSource = ((CategoryTask)_task).Images;
             BindingContext = _task;
             Reset();
         }

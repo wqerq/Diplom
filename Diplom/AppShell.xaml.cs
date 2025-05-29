@@ -14,9 +14,7 @@ namespace Diplom
             Routing.RegisterRoute("summary", typeof(SummaryPage));
             Routing.RegisterRoute("main", typeof(StartPage));
             Routing.RegisterRoute("stats", typeof(StatsPage));
+            Routing.RegisterRoute("video", typeof(DailyVideoPage));
         }
-
-        public ICommand OpenSettingsCommand =>
-            new Command(async () => await DisplayAlert("Настройки", "Тут будет позже", "OK"));
     }
 }

@@ -27,12 +27,24 @@
                 <views:CategoryView/>
             </DataTemplate>
 
+            <DataTemplate x:Key="YesNoTpl" x:DataType="models:YesNoTask">
+                <views:CategoryView/>
+            </DataTemplate>
+
+            <DataTemplate x:Key="SentenceCompleteTpl" x:DataType="models:SentenceCompleteTask">
+                <views:CategoryView/>
+            </DataTemplate>
+
             <helper:TaskTemplateSelector x:Key="TaskSelector"
                       FindOddTemplate="{StaticResource FindOddTpl}"
                       CompleteRowTemplate="{StaticResource RowTpl}"
-                      CategoryTemplate="{StaticResource CatTpl}" />
+                      CategoryTemplate="{StaticResource CatTpl}" 
+                      YesNoTemplate    ="{StaticResource YesNoTpl}"
+                      SentenceTemplate ="{StaticResource SentenceCompleteTpl}"/>
 
             <helper:NotNullConverter x:Key="NotNull" />
+
+            <helper:EnumDisplayConverter x:Key="EnumDesc"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

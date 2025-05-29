@@ -13,6 +13,9 @@ namespace Diplom.Helpers
         public DataTemplate? FindOddTemplate { get; set; }
         public DataTemplate? CompleteRowTemplate { get; set; }
         public DataTemplate? CategoryTemplate { get; set; }
+        public DataTemplate? YesNoTemplate { get; set; }
+        public DataTemplate? TrueFalseTemplate { get; set; }
+        public DataTemplate? SentenceTemplate { get; set; }
 
         protected override DataTemplate OnSelectTemplate(object item, BindableObject _)
         => item switch
@@ -20,6 +23,8 @@ namespace Diplom.Helpers
             FindOddTask => FindOddTemplate!,
             CompleteRowTask => CompleteRowTemplate!,
             CategoryTask => CategoryTemplate!,
+            YesNoTask => YesNoTemplate!,
+            SentenceCompleteTask => SentenceTemplate!,
             _ => throw new NotSupportedException()
         };
     }

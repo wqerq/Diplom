@@ -67,6 +67,23 @@ namespace Diplom.Services
                     images: e.GetStringArray("images"),
                     answers: e.GetStringArray("answers"),
                     t: types, s: levels),
+                "YesNo" => new YesNoTask(
+                    Id: e.Get("id"),
+                    Description: e.Get("description"),
+                    Image: e.Get("image"),
+                    Answer: e.GetProperty("answer").GetBoolean(),
+                    Types: types,
+                    Levels: levels),
+                "SentenceComplete" => new SentenceCompleteTask(
+                    Id: e.Get("id"),
+                    Description: e.Get("description"),
+                    Opt1: e.Get("opt1"),
+                    Opt2: e.Get("opt2"),
+                    Opt3: e.Get("opt3"),
+                    Answer: e.Get("answer"),
+                    Types: types,
+                    Levels: levels),
+
 
                 _ => throw new NotSupportedException()
             };

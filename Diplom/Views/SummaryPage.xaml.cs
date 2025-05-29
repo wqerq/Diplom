@@ -8,7 +8,7 @@ public partial class SummaryPage : ContentPage, IQueryAttributable
     {
         int ok = (int)q["result"];
         int all = (int)q["total"];
-        Score.Text = $"Правильно {ok} из {all}";
+        Score.Text = $"Результат {ok}/{all}";
     }
 
     void OnHome(object s, EventArgs e) =>

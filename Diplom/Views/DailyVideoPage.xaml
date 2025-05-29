@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage x:Class="Diplom.Views.DailyVideoPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:media="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui.MediaElement"
+             xmlns:vm="clr-namespace:Diplom.ViewModels"
+             Title="Ежедневные видео">
+
+    <ContentPage.BindingContext>
+        <vm:DailyVideoViewModel />
+    </ContentPage.BindingContext>
+
+    <CollectionView ItemsSource="{Binding Clips}"
+                    SelectionMode="None">
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="vm:DailyVideoViewModel+Clip">
+
+                <VerticalStackLayout Padding="20" Spacing="12">
+
+                    <Label Text="{Binding Title}"
+                           FontSize="18"
+                           FontAttributes="Bold" />
+
+                    <media:MediaElement x:Name="Player"
+                                  Source="{Binding File,
+                                           StringFormat='ms-appx:///Resources/Raw/{0}'}"
+                                  HeightRequest="220"
+                                  MediaEnded="OnEnded"/>
+
+                    <Label FontSize="14">
+                        <Label.Triggers>
+
+                            <DataTrigger TargetType="Label"
+                                         Binding="{Binding Watched}"
+                                         Value="True">
+                                <Setter Property="Text" Value="Просмотрено"/>
+                                <Setter Property="TextColor" Value="Green"/>
+                            </DataTrigger>
+
+                            <DataTrigger TargetType="Label"
+                                         Binding="{Binding Watched}"
+                                         Value="False">
+                                <Setter Property="Text" Value="Ещё не просмотрено"/>
+                                <Setter Property="TextColor" Value="Red"/>
+                            </DataTrigger>
+
+                        </Label.Triggers>
+                    </Label>
+
+                </VerticalStackLayout>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentPage>

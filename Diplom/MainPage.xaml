@@ -11,19 +11,19 @@
 
         <Button Grid.ColumnSpan="2"
                 Style="{StaticResource CardButton}"
-                Text="Новая тренировка"
+                Text="Тренировка"
                 ImageSource="ic_training_big.png"
                 Command="{Binding StartTrainingCommand}" />
 
         <Button Grid.Row="1"
                 Style="{StaticResource CardButton}"
-                Text="Видео-гимнастика"
+                Text="Видео"
                 ImageSource="ic_video_big.png"
                 Command="{Binding OpenVideoCommand}" />
 
         <Button Grid.Row="1" Grid.Column="1"
                 Style="{StaticResource CardButton}"
-                Text="Моя статистика"
+                Text="Статистика"
                 ImageSource="ic_stats_big.png"
                 Command="{Binding OpenStatsCommand}" />
     </Grid>

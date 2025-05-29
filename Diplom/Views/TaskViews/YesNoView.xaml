@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentView
+    x:Class="Diplom.Views.TaskViews.YesNoView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Name="Root">
+
+    <Grid>
+        <VerticalStackLayout Spacing="16">
+            <Label Text="{Binding Description}" FontSize="20"
+                   HorizontalOptions="Center"/>
+
+            <Image Source="{Binding Image}" HeightRequest="180"
+                   Aspect="AspectFit"/>
+
+            <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
+                <Button Text="Да"  Clicked="OnPickYes"/>
+                <Button Text="Нет" Clicked="OnPickNo"/>
+            </HorizontalStackLayout>
+
+            <Button Text="Ответить"
+                    IsEnabled="{Binding IsCompleted, Source={x:Reference Root}}"
+                    Clicked="OnAnswer"/>
+        </VerticalStackLayout>
+
+        <Grid x:Name="Overlay" BackgroundColor="#80000080"
+              IsVisible="False">
+            <Frame BackgroundColor="White" CornerRadius="20" Padding="24"
+                   HorizontalOptions="Center" VerticalOptions="Center">
+                <VerticalStackLayout Spacing="16">
+                    <Label x:Name="ResultText" FontSize="20"
+                           FontAttributes="Bold" HorizontalOptions="Center"/>
+                    <Button Text="Дальше" Clicked="OnContinue"/>
+                </VerticalStackLayout>
+            </Frame>
+        </Grid>
+    </Grid>
+</ContentView>
