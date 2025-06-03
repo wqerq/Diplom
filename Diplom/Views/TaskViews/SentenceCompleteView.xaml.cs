@@ -7,8 +7,29 @@ public partial class SentenceCompleteView : ContentView, ITaskPresenter
 {
     public SentenceCompleteView() => InitializeComponent();
 
-    public TaskBase Task { get; set; } = null!;
-    public bool IsCompleted => picked is not null;
+    public TaskBase _task = null!;
+
+    public TaskBase Task
+    {
+        get => _task;
+        set
+        {
+            _task = value;
+            BindingContext = (SentenceCompleteTask)_task;
+            Reset();
+        }
+    }
+    bool _isCompleted;
+    public bool IsCompleted
+    {
+        get => _isCompleted;
+        private set
+        {
+            if (_isCompleted == value) return;
+            _isCompleted = value;
+            OnPropertyChanged(nameof(IsCompleted));
+        }
+    }
     public bool IsCorrect { get; private set; }
 
     string? picked;
@@ -16,7 +37,10 @@ public partial class SentenceCompleteView : ContentView, ITaskPresenter
     public event EventHandler? ContinueRequested;
 
     void OnPick(object sender, EventArgs e)
-        => picked = ((Button)sender).Text;
+    {
+        picked = ((Button)sender).Text;
+        IsCompleted = true;
+    }
 
     void OnAnswer(object? s, EventArgs e)
     {
@@ -43,8 +67,5 @@ public partial class SentenceCompleteView : ContentView, ITaskPresenter
         Overlay.IsVisible = false;
     }
 
-    public void CheckAnswer()
-    {
-        throw new NotImplementedException();
-    }
+    public void CheckAnswer() => OnAnswer(this, EventArgs.Empty);
 }

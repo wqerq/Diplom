@@ -28,11 +28,15 @@
             </DataTemplate>
 
             <DataTemplate x:Key="YesNoTpl" x:DataType="models:YesNoTask">
-                <views:CategoryView/>
+                <views:YesNoView/>
             </DataTemplate>
 
             <DataTemplate x:Key="SentenceCompleteTpl" x:DataType="models:SentenceCompleteTask">
-                <views:CategoryView/>
+                <views:SentenceCompleteView/>
+            </DataTemplate>
+
+            <DataTemplate x:Key="AudioTaskTpl" x:DataType="models:AudioTask">
+                <views:AudioTaskView/>
             </DataTemplate>
 
             <helper:TaskTemplateSelector x:Key="TaskSelector"
@@ -40,7 +44,8 @@
                       CompleteRowTemplate="{StaticResource RowTpl}"
                       CategoryTemplate="{StaticResource CatTpl}" 
                       YesNoTemplate    ="{StaticResource YesNoTpl}"
-                      SentenceTemplate ="{StaticResource SentenceCompleteTpl}"/>
+                      SentenceTemplate ="{StaticResource SentenceCompleteTpl}"
+                      AudioTemplate ="{StaticResource AudioTaskTpl}"/>
 
             <helper:NotNullConverter x:Key="NotNull" />
 

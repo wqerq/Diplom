@@ -15,10 +15,6 @@ public partial class CompleteRowView : ContentView, ITaskPresenter, INotifyPrope
         set
         {
             _task = value;
-            var crt = (CompleteRowTask)_task;
-            Row.ItemsSource = crt.Row;
-            Variants.ItemsSource = crt.Variants;
-            BindingContext = _task;
             Reset();
         }
     }
@@ -44,7 +40,6 @@ public partial class CompleteRowView : ContentView, ITaskPresenter, INotifyPrope
         _isCorrect = false;
         IsCompleted = false;
         Overlay.IsVisible = false;
-        Variants.SelectedItem = null;
     }
 
     void OnSel(object? _, SelectionChangedEventArgs e)

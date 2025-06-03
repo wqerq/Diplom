@@ -65,17 +65,32 @@
   {
     "kind": "YesNo",
     "id": "yn_001",
-    "description": "Это молоток?",
+    "description": "Ответь а вопрос",
+    "question":  "Это молоток?",
     "image": "spoon.png",
-    "answer": false
+    "answer": false,
+    "types": [ 1, 2, 3, 4, 5 ],
+    "levels": [ 1, 2, 3 ]
   },
   {
     "kind": "SentenceComplete",
     "id": "sc_001",
-    "description": "Куй железо, пока …",
+    "description": "Продолжи предложение",
+    "sentence": "Куй железо, пока …",
     "opt1": "поздно",
     "opt2": "горячо",
     "opt3": "холодно",
-    "answer": "горячо"
+    "answer": "горячо",
+    "types": [ 1, 2, 3, 4, 5 ],
+    "levels": [ 1, 2, 3 ]
+  },
+  {
+    "id": "speech-demo",
+    "kind": "Audio",
+    "description": "Прослушай текст и выполни задание",
+    "text": "Давайте вместе посчитаем от одного до десяти : Один, Два, Три, Четыре, Пять, Шесть, Семь, Восемь, Девять, Десять",
+    "types": [ 1, 2, 3, 4, 5 ],
+    "levels": [ 1, 2, 3 ]
   }
+
 ]

@@ -8,7 +8,7 @@
     <Grid>
 
         <VerticalStackLayout Spacing="16">
-            <CollectionView x:Name="Pictures"
+            <CollectionView ItemsSource="{Binding Task.Images}"
                             SelectionMode="Single"
                             SelectionChanged="OnSel">
                 <CollectionView.ItemsLayout>

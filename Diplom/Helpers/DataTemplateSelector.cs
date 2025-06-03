@@ -16,6 +16,8 @@ namespace Diplom.Helpers
         public DataTemplate? YesNoTemplate { get; set; }
         public DataTemplate? TrueFalseTemplate { get; set; }
         public DataTemplate? SentenceTemplate { get; set; }
+        public DataTemplate? AudioTemplate { get; set; }
+
 
         protected override DataTemplate OnSelectTemplate(object item, BindableObject _)
         => item switch
@@ -25,6 +27,7 @@ namespace Diplom.Helpers
             CategoryTask => CategoryTemplate!,
             YesNoTask => YesNoTemplate!,
             SentenceCompleteTask => SentenceTemplate!,
+            AudioTask => AudioTemplate!,
             _ => throw new NotSupportedException()
         };
     }

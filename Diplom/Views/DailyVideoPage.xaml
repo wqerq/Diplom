@@ -21,11 +21,10 @@
                            FontSize="18"
                            FontAttributes="Bold" />
 
-                    <media:MediaElement x:Name="Player"
-                                  Source="{Binding File,
-                                           StringFormat='ms-appx:///Resources/Raw/{0}'}"
-                                  HeightRequest="220"
-                                  MediaEnded="OnEnded"/>
+                    <media:MediaElement HeightRequest="220" 
+                        MediaEnded="OnEnded"
+                        Source="{Binding File}" />
+
 
                     <Label FontSize="14">
                         <Label.Triggers>

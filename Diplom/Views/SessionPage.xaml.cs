@@ -39,7 +39,6 @@ public partial class SessionPage : ContentPage
         if (view is ITaskPresenter pres)
         {
             pres.Task = task;
-            view.BindingContext = view;
 
             if (view is INotifyPropertyChanged)
                 (view as ContentView).BindingContext = pres;

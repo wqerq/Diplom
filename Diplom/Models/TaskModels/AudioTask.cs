@@ -2,12 +2,10 @@
 
 namespace Diplom.Models.TaskModels
 {
-    public record YesNoTask(
+    public record AudioTask(
     string Id,
     string Description,
-    string Question,
-    string Image,
-    bool Answer,
+    string Text,
     AphasiaType[] Types,
     Severity[] Levels)
     : TaskBase(Id, Description, Types, Levels);

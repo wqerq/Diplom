@@ -7,10 +7,10 @@
 
     <Grid>
         <VerticalStackLayout Spacing="16">
-            <Label Text="{Binding Description}" FontSize="20"
+            <Label Text="{Binding Task.Question}" FontSize="20"
                    HorizontalOptions="Center"/>
 
-            <Image Source="{Binding Image}" HeightRequest="180"
+            <Image Source="{Binding Task.Image}" HeightRequest="180"
                    Aspect="AspectFit"/>
 
             <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">

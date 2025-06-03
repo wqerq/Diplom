@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="Diplom.Views.SeverityPicker"
+    x:Class="Diplom.Views.SeverityPickerPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:vm="clr-namespace:Diplom.ViewModels"
@@ -15,17 +15,15 @@
     <Grid Padding="24" RowSpacing="24">
         <StackLayout x:Name="Step1"
                      IsVisible="{Binding IsStep1}">
-            <Label Text="Выберите тип афазии"
-                   Style="{StaticResource TitleFont}" />
+            <Label Text="Выберите тип афазии"/>
 
             <CollectionView ItemsSource="{Binding AphasiaTypes}"
                 SelectionMode="Single"
                 SelectedItem="{Binding SelectedType}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Label Text="{Binding}"
-                            Padding="20"
-                   BackgroundColor="#DDDDDD" />
+                        <Label Text="{Binding .,Converter={StaticResource EnumDesc}}"
+                            Padding="20"/>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
@@ -38,17 +36,15 @@
 
         <StackLayout x:Name="Step2"
                      IsVisible="{Binding IsStep2}">
-            <Label Text="Степень тяжести"
-                   Style="{StaticResource TitleFont}" />
+            <Label Text="Степень тяжести"/>
 
             <CollectionView ItemsSource="{Binding Severities}"
                     SelectionMode="Single"
                     SelectedItem="{Binding SelectedSeverity}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Label Text="{Binding}"
-                            Padding="20"
-                            BackgroundColor="#DDDDDD" />
+                        <Label Text="{Binding  .,Converter={StaticResource EnumDesc}}"
+                            Padding="20" />
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

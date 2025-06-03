@@ -15,7 +15,6 @@ public partial class CategoryView : ContentView, ITaskPresenter, INotifyProperty
         set
         {
             _task = value;
-            BindingContext = _task;
             Reset();
         }
     }
@@ -41,7 +40,6 @@ public partial class CategoryView : ContentView, ITaskPresenter, INotifyProperty
         _isCorrect = false;
         IsCompleted = false;
         Overlay.IsVisible = false;
-        Gallery.SelectedItems.Clear();
     }
 
     void OnAnswer(object? sender, EventArgs e)

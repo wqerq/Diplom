@@ -23,8 +23,8 @@ namespace Diplom
                 });
             builder
                 .UseMauiApp<App>()
-                .UseMauiCommunityToolkit().
-                UseMauiCommunityToolkitMediaElement();
+                .UseMauiCommunityToolkit()
+                .UseMauiCommunityToolkitMediaElement();
             builder
                 .UseMauiApp<App>()
                 .UseMicrocharts();

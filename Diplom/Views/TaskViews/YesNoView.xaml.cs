@@ -1,6 +1,6 @@
 ﻿using Diplom.Models;
 using Diplom.Models.TaskModels;
-using System.ComponentModel;
+using Microsoft.Maui.Graphics;
 
 namespace Diplom.Views.TaskViews;
 
@@ -9,8 +9,30 @@ public partial class YesNoView : ContentView, ITaskPresenter
 {
     public YesNoView() => InitializeComponent();
 
-    public TaskBase Task { get; set; } = null!;
-    public bool IsCompleted { get; private set; }
+    TaskBase _task = null!;
+    public TaskBase Task
+    {
+        get => _task;
+        set
+        {
+            _task = value;
+            BindingContext = (YesNoTask)_task;
+            Reset();
+        }
+    }
+
+
+    bool _isCompleted;
+    public bool IsCompleted
+    {
+        get => _isCompleted;
+        private set
+        {
+            if (_isCompleted == value) return;
+            _isCompleted = value;
+            OnPropertyChanged(nameof(IsCompleted));
+        }
+    }
     public bool IsCorrect { get; private set; }
 
 
@@ -54,8 +76,5 @@ public partial class YesNoView : ContentView, ITaskPresenter
         Overlay.IsVisible = false;
     }
 
-    public void CheckAnswer()
-    {
-        throw new NotImplementedException();
-    }
+    public void CheckAnswer() => OnAnswer(this, EventArgs.Empty);
 }

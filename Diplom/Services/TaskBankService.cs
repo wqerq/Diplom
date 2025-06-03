@@ -70,6 +70,7 @@ namespace Diplom.Services
                 "YesNo" => new YesNoTask(
                     Id: e.Get("id"),
                     Description: e.Get("description"),
+                    Question: e.Get("question"),
                     Image: e.Get("image"),
                     Answer: e.GetProperty("answer").GetBoolean(),
                     Types: types,
@@ -77,13 +78,20 @@ namespace Diplom.Services
                 "SentenceComplete" => new SentenceCompleteTask(
                     Id: e.Get("id"),
                     Description: e.Get("description"),
+                    Sentence: e.Get("sentence"),
                     Opt1: e.Get("opt1"),
                     Opt2: e.Get("opt2"),
                     Opt3: e.Get("opt3"),
                     Answer: e.Get("answer"),
                     Types: types,
                     Levels: levels),
-
+                "Audio" => new AudioTask(
+                    Id: e.Get("id"),
+                    Description: e.Get("description"),
+                    Text: e.Get("text"),
+                    Types: types,
+                    Levels: levels
+                    ),
 
                 _ => throw new NotSupportedException()
             };

@@ -9,7 +9,7 @@ namespace Diplom
         {
             InitializeComponent();
             BindingContext = this;
-            Routing.RegisterRoute("select", typeof(SeverityPicker));
+            Routing.RegisterRoute("select", typeof(SeverityPickerPage));
             Routing.RegisterRoute("session", typeof(SessionPage));
             Routing.RegisterRoute("summary", typeof(SummaryPage));
             Routing.RegisterRoute("main", typeof(StartPage));

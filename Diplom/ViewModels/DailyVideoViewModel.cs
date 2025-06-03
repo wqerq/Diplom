@@ -18,7 +18,6 @@ public partial class DailyVideoViewModel : ObservableObject
         }
     }
 
-
     const string Key = "video_";
 
     public ObservableCollection<Clip> Clips { get; }
@@ -28,12 +27,12 @@ public partial class DailyVideoViewModel : ObservableObject
         Clips = new ObservableCollection<Clip>
         {
             new Clip("Первое видео",
-                     "FirstTrainig.mp4",
-                     Preferences.Get(Key+"FirstTrainig.mp4", false)),
+                     "FirstTraining.mp4",
+                     Preferences.Get(Key+"FirstTraining.mp4", false)),
 
             new Clip("Второе видео",
-                     "SecondTrainnig.mp4",
-                     Preferences.Get(Key+"SecondTrainnig.mp4", false))
+                     "SecondTraining.mp4",
+                     Preferences.Get(Key+"SecondTraining.mp4", false))
         };
     }
 

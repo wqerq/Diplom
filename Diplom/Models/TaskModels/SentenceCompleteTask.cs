@@ -5,6 +5,7 @@ namespace Diplom.Models.TaskModels;
 public record SentenceCompleteTask(
     string Id,
     string Description,
+    string Sentence,
     string Opt1,
     string Opt2,
     string Opt3,

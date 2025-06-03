@@ -7,21 +7,27 @@
     <Grid>
         <VerticalStackLayout Spacing="16">
 
-            <CollectionView x:Name="Row"
-                        SelectionMode="None"
-                        HeightRequest="100">
+            <CollectionView ItemsSource="{Binding Task.Row}"
+                SelectionMode="None"
+                VerticalOptions="Start">
+
                 <CollectionView.ItemsLayout>
-                    <LinearItemsLayout Orientation="Horizontal" ItemSpacing="8"/>
+                    <GridItemsLayout Orientation="Vertical"
+                        Span="2"
+                        VerticalItemSpacing="8"
+                        HorizontalItemSpacing="8"/>
                 </CollectionView.ItemsLayout>
+
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Image Source="{Binding .}"
-                           HeightRequest="90"/>
+                   HeightRequest="100"
+                   Aspect="AspectFill"/>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-            <CollectionView x:Name="Variants"
+            <CollectionView ItemsSource="{Binding Task.Variants}"
                         Margin="0,110,0,0" 
                         SelectionMode="Single"
                         SelectionChanged="OnSel">

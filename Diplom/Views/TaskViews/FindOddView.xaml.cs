@@ -15,7 +15,6 @@ public partial class FindOddView : ContentView, ITaskPresenter, INotifyPropertyC
         set
         {
             _task = value;
-            Pictures.ItemsSource = ((FindOddTask)_task).Images;
             BindingContext = _task;
             Reset();
         }
@@ -40,7 +39,6 @@ public partial class FindOddView : ContentView, ITaskPresenter, INotifyPropertyC
         _isCorrect = false;
         IsCompleted = false;
         Overlay.IsVisible = false;
-        Pictures.SelectedItem = null;
     }
 
     void OnSel(object? _, SelectionChangedEventArgs e)

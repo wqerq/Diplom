@@ -7,11 +7,8 @@
     <Grid>
         <VerticalStackLayout Spacing="16">
 
-            <Label Text="{Binding Description}"
-                   FontSize="18"
-                   FontAttributes="Bold"/>
-
             <CollectionView x:Name="Gallery"
+                            ItemsSource="{Binding Task.Gallery}"
                             SelectionMode="Multiple">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Span="3"
